@@ -1,0 +1,16 @@
+{
+	"name": "EnhancedUI",
+	"version": "0.1.0",
+	"manifest_version": 3,
+	"author": "Juan Manuel & Hendrick Rodriguez",
+	"description": "Extension to customize and enhance your browser experience",
+	"icons": {
+		"16": "./logo192.png",
+		"32": "./logo192.png",
+		"48": "./logo192.png",
+		"128": "./logo192.png"
+	},
+	"chrome_url_overrides": {
+		"newtab": "index.html"
+	}
+}
