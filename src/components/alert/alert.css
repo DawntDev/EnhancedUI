@@ -1,0 +1,86 @@
+.alert > div.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 95%;
+}
+
+.alert > div.content > div.type {
+    width: 3%;
+    height: 100%;
+    border-radius: 0 12px 0px 0;
+    margin-right: 0.5rem;
+    background-color: #68b1ff;
+}
+
+.alert > div.content > p {
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    animation: text-show 0.5s ease-in-out;
+}
+
+.alert > div.bar {
+    width: 0%;
+    height: 7%;
+    background-color: var(--bg-secondary);
+    transition: width ease-in-out (0, 1.03, 0.98, -0.1);
+}
+
+.alert.hide { animation: alert-hide 0.5s ease-in-out; }
+.alert.hide > div.content > p { animation: text-hide 0.5s ease-in-out; }
+
+/* Types of alerts */
+.alert {
+    --success: #0fcf58;
+    --error: #ff4d4f;
+    --warning: #ffbb28;
+    --info: #68b1ff;
+}
+
+/* Alert design foreach of types */
+.alert[typeof="success"] { }
+.alert[typeof="error"] { }
+.alert[typeof="warning"] { }
+.alert[typeof="info"] { }
+
+@keyframes alert-show {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+
+    }
+}
+
+@keyframes alert-hide {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+
+@keyframes text-show {
+    0% {
+        width: 0%;
+        font-size: .25rem;
+    }
+    100% {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+@keyframes text-hide {
+    0% {
+        width: 100%;
+        font-size: 1rem;
+    }
+    100% {
+        width: 0%;
+        font-size: .25rem;
+    }
+}

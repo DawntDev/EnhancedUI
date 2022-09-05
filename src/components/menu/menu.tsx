@@ -1,12 +1,10 @@
-import { useState, cloneElement } from "react";
+import { useState } from "react";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
-import { IMenuProps, IAlertProps } from "../../interfaces";
-import Alert from "./alert";
+import { IMenuProps } from "../../interfaces";
 import "./menu.css";
 
 export default function Menu({ children, def, theme, themeDispatch }: IMenuProps): JSX.Element {
     const [option, setOption] = useState<string>(def); // element to rendering in the menu
-    const [alerts, setAlerts] = useState<IAlertProps[]>([]); // alerts to rendering in the menu
     const sections: { [key: string]: JSX.Element } = Object.fromEntries(
         ( // Create a object with the children of the menu and the title of the section
             // Example:
@@ -27,7 +25,6 @@ export default function Menu({ children, def, theme, themeDispatch }: IMenuProps
 
     return (
         <>
-            {Alert({ alerts, setAlerts })}
             <div id="menu">
                 <aside>
                     {theme ? <BsSunFill onClick={themeDispatch} /> : <BsMoonFill onClick={themeDispatch} />}
@@ -45,7 +42,7 @@ export default function Menu({ children, def, theme, themeDispatch }: IMenuProps
                     </ul>
                 </aside>
                 <section>
-                    {cloneElement(sections[option], { setAlerts })}
+                    {sections[option]}
                 </section>
             </div>
         </>

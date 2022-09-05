@@ -22,4 +22,5 @@ export interface IAlertProps {
     message: string;
     type: "success" | "error" | "warning" | "info";
     timeout?: number;
+    destroy: () => void;
 }
