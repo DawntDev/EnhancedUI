@@ -9,6 +9,12 @@
     list-style: none;
 }
 
+#EnhancedUI, #root, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 #EnhancedUI[data-theme="light"] {
     --bg: #e5e5e6;
     --bg-secondary: #0fcf58;
@@ -31,24 +37,4 @@
     --text-secondary: #fff;
     --text-active: #8368ff;
     --text-disabled: #858585;
-}
-
-.section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 2rem;
-}
-
-.alert {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 5rem;
-    animation: alert-animation 0.5s ease-in-out;
-    border-radius: 0 16px 0 0;
 }

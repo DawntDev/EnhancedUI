@@ -1,0 +1,84 @@
+/* background.tsx */
+section.background div.container {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    min-width: 790px
+}
+
+section.background div.container>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+section.background div.container div>p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+}
+/* End Background */
+
+
+
+/* color.tsx */
+div.color>div.input-color {
+    display: flex;
+    align-items: center;
+}
+
+div.color>div.input-color input[type="text"] {
+    width: 11.75vw;
+    height: 6.5vh;
+    padding: 0 1rem;
+    color: var(--text-primary);
+    font-size: 15px;
+    border: 2.5px solid var(--bg-secondary);
+    outline: none;
+    border-radius: 8px 0 0 8px;
+    background-color: transparent;
+    min-width: 125px;
+
+}
+
+div.color>div.input-color input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: 6.5vh;
+    height: 7.5vh;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    margin-left: -.25rem;
+    min-width: 25
+}
+
+div.color>div.input-color input[type="color"]::-webkit-color-swatch {
+    border: none;
+    outline: none;
+    border-radius: 0 8px 8px 0;
+}
+
+div.color>div.input-color input[type="color"]::-moz-color-swatch {
+    border: none;
+    border-radius: 0 8px 8px 0;
+}
+
+div.color>button {
+    margin-top: 1rem;
+    padding: .75rem calc(1rem + 5vw);
+}
+/* End Color */
+
+
+
+/* image.tsx */
+
+/* End Image */

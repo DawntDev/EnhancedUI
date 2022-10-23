@@ -1,107 +1,98 @@
-div#menu {
+div#Menu {
     position: fixed;
-    display: flex;
-    flex-direction: row;
-    width: 85vw;
-    height: 85vh;
+    width: 85%;
+    height: 85%;
     margin: auto;
     top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    z-index: 100;
+    z-index: 9999;
+    min-width: 1000px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
     cursor: crosshair;
-    animation: drop 0.3s ease-in-out;
 }
 
-div#menu > aside {
-    width: 25%;
-    min-width: 200px;
+div#Menu aside {
+    width: 21.25%;
     height: 100%;
-    background: var(--bg);
-    border-radius: 16px 0 0 16px;
+    background-color: var(--bg);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px 0 0 15px;
     transition: all 0.5s ease-in-out;
+    z-index: 9800;
 }
 
-div#menu > section {
-    width: 75%;
-    min-width: 610px;
-    height: 100%;
-    background: var(--bg-glass);
-    border-radius: 0 16px 16px 0;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.4px);
-    -webkit-backdrop-filter: blur(7.4px);
-}
-
-
-div#menu > aside > svg {
+div#Menu aside svg {
     fill: var(--text-primary);
-    width: 20px;
-    height: 20px;
+    width: calc(1px + 1.25vw);
+    height: calc(1px + 1.25vw);
     margin: 1rem 0 0 1rem;
     transition: all 0.5s ease-in-out;
+    min-width: 1rem;
+    min-height: 1rem;
 }
 
-div#menu > aside > h1 {
-    font-family: 'Noto Sans KR', sans-serif;
+div#Menu aside h1 {
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--text-primary);
-    margin: .25rem 0 1.5rem;
+    margin: 0.25rem 0 1.5rem;
     text-align: center;
 }
 
-div#menu > aside > ul {
+div#Menu aside ul {
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
     height: 80%;
 }
 
-div#menu > aside > ul::-webkit-scrollbar {width: 5px;}
-div#menu > aside > ul::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: var(--text-primary);
-}
-
-div#menu > aside > ul > li {
+div#Menu aside ul li {
     margin: 0 1rem 5px;
 }
 
-div#menu > aside > ul > li > button {
+div#Menu aside ul li button {
     width: 100%;
     height: 55px;
     background-color: var(--bg-secondary);
     border: solid 2px var(--bg-secondary);
     border-radius: 8px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 1rem;
     font-weight: 300;
     color: var(--text-primary);
     cursor: crosshair;
-    transition: all 0.5s ease-in-out;
 }
 
-div#menu > aside > ul > li > button:hover {
-    background-color: var(--bg-active);
-    border: solid 2px var(--bg-active);
-    transition: all 0.3s ease-in-out;
-}
-
-div#menu > aside > ul > li.active > button {
+div#Menu aside ul li.active button {
     background-color: var(--bg);
     color: var(--text-active);
     border: solid 2px var(--bg-active);
+
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-@keyframes drop {
-    from {
-        top: -100%;
-    }
-    to {
-        top: 0;
-    }
+div#Menu section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 78.75%;
+    height: 100%;
+    min-width: 800px;
+    padding: 2rem 0;
+    background-color: var(--bg-glass);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(7.4px);
+    backdrop-filter: blur(7.4px);
+    border-radius: 0 15px 15px 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 9700;
 }

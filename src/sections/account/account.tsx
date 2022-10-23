@@ -1,6 +1,6 @@
 import { Title } from "../../components";
 
-export default function HotKeys(props:any) {
+export default function Account(props:any) {
     return (
         <section>
             <Title str={props.title} />

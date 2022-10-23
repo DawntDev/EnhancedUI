@@ -1,34 +1,36 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Menu } from "./components";
-import { About, Components, Configs, HotKeys, Statics } from "./sections";
+import { Account, Background, Components, Configs, HotKeys, Statics } from "./sections";
 import { useTheme } from "./hooks";
 
 export default function EnhancedUI() {
     const app = useRef<HTMLDivElement>(null);
     const [theme, changeTheme] = useTheme(app);
     const [menu, setMenu] = useState<boolean>(false);
+    const toggleMenu = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.ctrlKey && e.key === ".") setMenu(!menu);
+        },
+        [menu]
+    );
 
     useEffect(() => {
-        document.onkeyup = (e: globalThis.KeyboardEvent): void => {
-            if ((e.ctrlKey && e.key === ".") || (e.key === "Escape" && menu)) {
-                setMenu(!menu);
-            };
-        };
-        return () => { document.onkeyup = null; };
-    }, [menu]);
+        document.addEventListener("keydown", toggleMenu);
+        return () => document.removeEventListener("keydown", toggleMenu);
+    }, [toggleMenu]);
 
     return (
         <div id="EnhancedUI" ref={app}>
-            {
-                menu &&
-                <Menu def="Components" theme={theme} themeDispatch={changeTheme} >
+            {menu && (
+                <Menu theme={theme} themeDispatch={changeTheme}>
+                    <Background title="Background" />
                     <Components title="Components" />
                     <Statics title="Statics" />
                     <HotKeys title="HotKeys" />
                     <Configs title="Configs" />
-                    <About title="About" />
+                    <Account title="Account" />
                 </Menu>
-            }
+            )}
         </div>
     );
 };

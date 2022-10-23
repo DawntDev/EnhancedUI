@@ -1,7 +1,14 @@
+import { Title } from "../../components";
+
 export default function Components(props:any) {
     return (
-        <div>
-            <h1>Components</h1>
-        </div>
+        <section>
+            <Title str={props.title} />
+            <div className="form">
+
+            </div>
+            <div className="items">
+            </div>
+        </section>
     );
 };
