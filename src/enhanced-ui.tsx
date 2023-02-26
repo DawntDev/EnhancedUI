@@ -1,17 +1,20 @@
-import { useEffect, useState, useRef, useCallback } from "react";
-import { Menu } from "./components";
-import { Account, Background, Components, Configs, HotKeys, Statics } from "./sections";
-import { useTheme } from "./hooks";
+import { useState, useEffect, useCallback } from "react";
+import Settings from "./components/settings";
+import NavBar from "./components/nav-bar";
+import views from "./views";
+import { useContextUI } from "./provider";
+import SearchBar from "./components/search-bar";
+import { useBackground } from "./provider/background";
 
 export default function EnhancedUI() {
-    const app = useRef<HTMLDivElement>(null);
-    const [theme, changeTheme] = useTheme(app);
-    const [menu, setMenu] = useState<boolean>(false);
+    const [currentView, setCurrentView] = useState<string>("General");
+    const [showSetUp, setShowSetUp] = useState<boolean>();
+    const { currentUI: { background, searchEngine } } = useContextUI();
     const toggleMenu = useCallback(
         (e: KeyboardEvent) => {
-            if (e.ctrlKey && e.key === ".") setMenu(!menu);
+            if (e.ctrlKey && e.key === ".") setShowSetUp(!showSetUp);
         },
-        [menu]
+        [showSetUp]
     );
 
     useEffect(() => {
@@ -20,17 +23,19 @@ export default function EnhancedUI() {
     }, [toggleMenu]);
 
     return (
-        <div id="EnhancedUI" ref={app}>
-            {menu && (
-                <Menu theme={theme} themeDispatch={changeTheme}>
-                    <Background title="Background" />
-                    <Components title="Components" />
-                    <Statics title="Statics" />
-                    <HotKeys title="HotKeys" />
-                    <Configs title="Configs" />
-                    <Account title="Account" />
-                </Menu>
-            )}
+        <div id="EnhancedUI" data-theme="dark"
+            style={background.type !== "video" ? useBackground(background) : {}}
+        >
+            <Settings isOpen={showSetUp}>
+                <NavBar
+                    currentView={currentView}
+                    views={Object.keys(views)}
+                    setView={setCurrentView}
+                />
+                {views[currentView]}
+            </Settings>
+            <SearchBar {...searchEngine}/>
         </div>
     );
 };
+
