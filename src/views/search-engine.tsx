@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import { Browsers } from "../provider/search-engine";
+import { Browsers, ISearchEngine } from "../provider/search-engine";
 import { useContextUI } from "../provider";
 import { hex } from "../provider/types";
 import Select from "../components/select";
+import { useState } from "react";
 
 export default function SearchEngine() {
     const { currentUI: { searchEngine }, setUiProperty } = useContextUI();
+    const [preview, setPreview] = useState<ISearchEngine>(searchEngine);
 
     return (
         < motion.div className="w-3/4 p-5"

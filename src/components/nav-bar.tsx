@@ -20,7 +20,7 @@ export default function NavBar(
                     <BsCircleFill className="circle" />
                     <BsCircleFill className="circle" />
                 </li>
-                <li className="mr-5">
+                <li className="mx-5 whitespace-nowrap overflow-x-auto">
                     {
                         views.map((el, i) => {
                             return (

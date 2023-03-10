@@ -1,17 +1,19 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { BackgroundTypes, IBackgroundColor } from "./background";
-import { SearchEngine } from "./search-engine";
+import { ISearchEngine } from "./search-engine";
+import { IConnections } from "./connections";
 
 interface IContextUI {
     background: BackgroundTypes,
-    searchEngine: SearchEngine
+    searchEngine: ISearchEngine,
+    connections: IConnections
 };
 
 type TContextUI = {
     currentUI: IContextUI
     setUiProperty: (
-        property: "background" | "search-engine",
-        value: BackgroundTypes | SearchEngine
+        property: "background" | "search-engine" | "connection",
+        value: BackgroundTypes | ISearchEngine | IConnections
     ) => void
 };
 
@@ -27,7 +29,10 @@ let defaultUI: IContextUI = localStorage.getItem("context-ui")
             background_color: "#000000",
             text_color: "#F8FAFC",
             acrylic: 65
-        } as SearchEngine
+        } as ISearchEngine,
+        connections: {
+            spotify: false
+        } as IConnections
     };
 
 const ContextUI = createContext<TContextUI>({
@@ -39,13 +44,15 @@ const ContextUI = createContext<TContextUI>({
 export function ProviderUI({ children }: { children: JSX.Element | JSX.Element[] }) {
     const [currentUI, setCurrentUI] = useState<IContextUI>(defaultUI);
     const setUiProperty = (
-        property: "background" | "search-engine",
-        value: BackgroundTypes | SearchEngine
+        property: "background" | "search-engine" | "connection",
+        value: BackgroundTypes | ISearchEngine | IConnections
     ) => {
         if (property === "background") {
-            setCurrentUI({ ...currentUI, background: value as BackgroundTypes })
-        } else if(property === "search-engine") {
-            setCurrentUI({...currentUI, searchEngine: value as SearchEngine})
+            setCurrentUI({ ...currentUI, background: value as BackgroundTypes });
+        } else if (property === "search-engine") {
+            setCurrentUI({ ...currentUI, searchEngine: value as ISearchEngine });
+        } else if (property === "connection") {
+            setCurrentUI({ ...currentUI, connections: value as IConnections });
         };
 
     };

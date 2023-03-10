@@ -10,7 +10,7 @@ export const Browsers: {[key in TBrowsers]: string} = {
 };
 
 
-export type SearchEngine = {
+export interface ISearchEngine {
     browser: TBrowsers
     background_color: hex
     text_color: hex

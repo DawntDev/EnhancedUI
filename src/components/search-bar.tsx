@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import { Browsers, SearchEngine, } from "../provider/search-engine";
+import { Browsers, ISearchEngine, } from "../provider/search-engine";
 import { BiSearch } from "react-icons/bi";
 
 export default function SearchBar(
@@ -8,7 +8,7 @@ export default function SearchBar(
         background_color,
         text_color,
         acrylic
-    }: SearchEngine
+    }: ISearchEngine
 ) {
     const input = useRef<HTMLInputElement>(null);
     const search = useCallback(
